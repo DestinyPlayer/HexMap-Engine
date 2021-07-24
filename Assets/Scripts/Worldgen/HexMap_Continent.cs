@@ -10,7 +10,7 @@ public class HexMap_Continent : HexMap
         base.GenerateMap();
 
         //Some kind of raised area
-        ElevateArea(0, 0, 3);
+        ElevateArea(1, 1, 3);
 
         //Add lumpiness
 
@@ -29,6 +29,7 @@ public class HexMap_Continent : HexMap
         //centerHex.Elevation = 0.5f;
 
         Hex[] areaHexes = GetHexesWithinRadius(centerHex, radius);
+        Debug.Log(centerHex);
         
         foreach(Hex h in areaHexes)
         {
