@@ -8,9 +8,16 @@ using UnityEngine;
 //S = -(Column + Row)
 public class Hex
 {
-    public readonly int column; //Column
-    public readonly int row;    //Row
+    public bool verticalWrap   = true; 
+    public bool horizontalWrap = true;
+
+    public readonly int column; //Horizontal
+    public readonly int row;    //Vertical
     public readonly int s;
+
+    //Map generation and effect data
+    public float Elevation;
+    public float Moisture;
 
     static readonly float HEIGHT_MATH = Mathf.Sqrt(3) / 2;
 
@@ -63,7 +70,7 @@ public class Hex
         //Preferrably between -0.5 and 0.5
         float widthsFromCamera  = (curPos.x - cameraPosition.x) / mapWidth;
         float heightsFromCamera = (curPos.z - cameraPosition.z) / mapHeight;
-        
+
         /*if (Mathf.Abs(widthsFromCamera) <= 0.5f)
         {
             return Position(); //Aka it's within this range
@@ -74,8 +81,11 @@ public class Hex
         // 2.8 =>  0.2
         // 2.6 => -0.4
         //-0.5 =>  0.4
+
         //West to East
-            if (widthsFromCamera > 0)
+        //if (horizontalWrap == true)
+        //{
+        if (widthsFromCamera > 0)
             {
                 widthsFromCamera += 0.5f;
             }
@@ -87,9 +97,10 @@ public class Hex
             int widthsToFix = (int)widthsFromCamera;
 
             curPos.x -= widthsToFix * mapWidth;
+        //}
 
         //North to South
-        //if (HexMap.VerticalWrap == true )
+        //if (verticalWrap == true)
         //{
             if (heightsFromCamera > 0)
             {

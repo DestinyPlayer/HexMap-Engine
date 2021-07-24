@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
             oldPosition = this.transform.position;
 
             //Make sure that the camera values don't overflow
-            //Doesn't yet work
+            //Doesn't work
             /*if (oldPosition.x >= 30)
             {
                 oldPosition.x = oldPosition.x - 30;

@@ -429,19 +429,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1968486277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f960df0574fc7d4ab61500b4d892f44, type: 3}
+  m_Script: {fileID: 11500000, guid: c4fe44d1b3e0b4c4e9afd108116ee4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapHeight: 40
-  mapWidth: 40
-  verticalWrap: 0
-  horizontalWrap: 0
+  mapHeight: 16
+  mapWidth: 16
+  verticalWrap: 1
+  horizontalWrap: 1
+  debug: 1
   HexPrefab: {fileID: 3462429425454026556, guid: a2eceb63e0afb034ab6a9f08f0364da2, type: 3}
-  HexMats:
-  - {fileID: 2100000, guid: 226644ce927c57e4d9c68fa4945b4214, type: 2}
-  - {fileID: 2100000, guid: d4762f3f3ae3ca94a9fc204cce3379f8, type: 2}
-  - {fileID: 2100000, guid: fd716c4451be7b44d8eef18445fe9b5d, type: 2}
-  - {fileID: 2100000, guid: 218c84e4153564d4c90829da8a39db98, type: 2}
+  MeshWater: {fileID: -2432090755550338912, guid: 7cc385ef45236f645864677ff8e41ddd, type: 3}
+  MeshFlat: {fileID: -2432090755550338912, guid: 7cc385ef45236f645864677ff8e41ddd, type: 3}
+  MeshHill: {fileID: -2432090755550338912, guid: 7cc385ef45236f645864677ff8e41ddd, type: 3}
+  MeshMountain: {fileID: -2432090755550338912, guid: 7cc385ef45236f645864677ff8e41ddd, type: 3}
+  MatWater: {fileID: 2100000, guid: 226644ce927c57e4d9c68fa4945b4214, type: 2}
+  MatGrass: {fileID: 2100000, guid: d4762f3f3ae3ca94a9fc204cce3379f8, type: 2}
+  MatSnow: {fileID: 2100000, guid: fd716c4451be7b44d8eef18445fe9b5d, type: 2}
+  MatDesert: {fileID: 2100000, guid: 218c84e4153564d4c90829da8a39db98, type: 2}
 --- !u!4 &1968486279
 Transform:
   m_ObjectHideFlags: 0
