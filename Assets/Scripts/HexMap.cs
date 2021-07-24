@@ -41,9 +41,24 @@ public class HexMap : MonoBehaviour
             return null;
         }
 
-        if (horizontalWrap == true) { x = x % mapWidth; }
-        if (verticalWrap   == true) { y = y % mapHeight; }
-
+        if (horizontalWrap == true) { 
+            while (x < 0)
+            {
+                x += mapWidth;
+            }
+            x %= mapWidth;
+        }
+        if (verticalWrap   == true) { 
+            while (y < 0)
+            {
+                y += mapHeight;
+            }
+            y %= mapHeight;
+        }
+        //x = x % mapWidth;
+        Debug.Log(x);
+        //y = y % mapHeight;
+        Debug.Log(y);
 
         return hexes[x, y];
     }
@@ -56,23 +71,20 @@ public class HexMap : MonoBehaviour
         {
             for (int dy = Mathf.Max(-radius, -dx-radius); dy <= Mathf.Min(radius, -dx+radius); dy++)
             {
-                results.Add(GetHex(centerHex.column + dx, centerHex.row + dy));
+                results.Add(GetHex(centerHex.column + dy, centerHex.row + dx));
             }
         }
         return results.ToArray();
     }
-
-    public bool VerticalWrap()   { return verticalWrap;   }
-    public bool HorizontalWrap() { return horizontalWrap; }
 
     virtual public void GenerateMap() //Generates the hex map. Nothing but water by default
     {
         hexes = new Hex[mapWidth, mapHeight];
         objMap = new Dictionary<Hex, GameObject>();
 
-        for (int column = 0; column < mapHeight; column++) //Vertical
+        for (int column = 0; column < mapHeight; column++) //Horizontal
         {
-            for (int row = 0; row < mapWidth; row++)       //Horizontal
+            for (int row = 0; row < mapWidth; row++)       //Vertical
             {
                 //Let's make a Hex
                 Hex h = new Hex(column, row);
@@ -102,7 +114,7 @@ public class HexMap : MonoBehaviour
 
                 if (debug == true)
                 {
-                    hexObj.GetComponentInChildren<TextMesh>().text = string.Format("{0}\n{1}", row, column);
+                    hexObj.GetComponentInChildren<TextMesh>().text = string.Format("{0},{1}", row, column);
                 }
             }
         }
@@ -111,9 +123,9 @@ public class HexMap : MonoBehaviour
 
     public void UpdateHexVisuals()
     {
-        for (int column = 0; column < mapHeight; column++) //Vertical
+        for (int column = 0; column < mapWidth; column++) //Vertical
         {
-            for (int row = 0; row < mapWidth; row++)       //Horizontal
+            for (int row = 0; row < mapHeight; row++)       //Horizontal
             {
                 Hex h = hexes[column, row];
                 GameObject hexObj = objMap[h];
