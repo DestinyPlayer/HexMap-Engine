@@ -46,8 +46,7 @@ public class HexMap : MonoBehaviour
             {
                 x += mapWidth;
             }
-            x %= mapHeight;
-            //if (x > mapWidth) {x}
+            x %= mapWidth;
         }
         if (verticalWrap   == true) { 
             while (y < 0)
